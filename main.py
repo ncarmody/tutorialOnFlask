@@ -31,8 +31,12 @@ pd.set_option('display.max_rows', 30)
 pd.set_option('display.expand_frame_repr', True)
 
 # sys.path.insert(0, os.getcwd())
-adress = os.getcwd()+"\\DataAfterEditing.csv"
-pp(adress)
+if os.name=='nt':
+	adress = os.getcwd()+"\\DataAfterEditing.csv"
+	pp(adress)
+elif os.name=='posix':
+	adress = os.getcwd()+"/DataAfterEditing.csv"
+	pp(adress)
 # sys.path.insert(0, adress)
 
 df = pd.read_csv(adress)

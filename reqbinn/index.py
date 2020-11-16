@@ -29,10 +29,14 @@ port = 8050
 #-------------------------------------------------------------------------------
 # Building our Web app and update financial data automatically
 # address = '\\'.join(os.getcwd().split('\\')[:-1])+"\\file.csv"
-address = os.getcwd()+"\\file.csv"
-# address.
-pp(address)
-
+if os.name=='nt':
+    address = os.getcwd()+"\\file.csv"
+    # address.
+    pp(address)
+elif os.name=='posix':
+    address = os.getcwd()+"/file.csv"
+    # address.
+    pp(address)
 
 
 application = dash.Dash(__name__)
