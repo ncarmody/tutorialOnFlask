@@ -11,7 +11,7 @@ if os.name=='nt':
 	adressse = os.getcwd()+"\\reqbinn"
 	pp(adressse)
 elif os.name=='posix':
-	adressse = os.getcwd()+"\\reqbinn"
+	adressse = os.getcwd()+"/reqbinn"
 	pp(adressse)
 
 sys.path.insert(0, adressse)
