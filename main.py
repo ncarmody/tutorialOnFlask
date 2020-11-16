@@ -7,8 +7,12 @@ from sqlalchemy import create_engine
 from function_col import pp, relPath
 from app import returnRequest
 import pandas as pd
-adressse = os.getcwd()+"\\reqbinn"
-pp(adressse)
+if os.name=='nt':
+	adressse = os.getcwd()+"\\reqbinn"
+	pp(adressse)
+elif os.name=='posix':
+	adressse = os.getcwd()+"\\reqbinn"
+	pp(adressse)
 
 sys.path.insert(0, adressse)
 from index import startMyPlot
