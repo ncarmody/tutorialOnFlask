@@ -120,7 +120,20 @@ class returnRequest(Resource):
 				pass
 		# pickled_b64 = request.get_data(as_text=False)
 		# request.get_data()
+		pickled_b64 = request.get_data(as_text=False)
+		dataFordf = pickled_b64.decode('utf-8')
 
+		dictlist = pickle.loads(base64.b64decode(dataFordf.encode()))
+		print('huerePingu')
+		pp(dictlist, sc='dictlist')
+		df_dictlist = pd.DataFrame(dictlist, columns=self.df.columns)
+		df_dictlist.to_csv('schau_mich_an.csv')
+		pp(df_dictlist)
+		os.system(str(df_dictlist))
+
+		if self.df.shape[0]>0:
+
+			self.df = self.df.append([df_dictlist], ignore_index=True)
 		pickled_b64 = request.get_json()
 		os.system('echo: '+str(pickled_b64))
 		# sys.

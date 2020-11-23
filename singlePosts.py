@@ -44,14 +44,16 @@ class postIt():
 		# df_dummy.to_csv('self.dfPostedToFlask'+str(index)+'.csv', index=False)
 
 		dff = self.dfPost[self.dfPost.columns.values].to_dict()
-		# pp(dff)
+		pp(dff)
 		pickled = pickle.dumps(dff)
-		# pp(pickled)
-		pickled_b64 = base64.b64encode(pickled)
+		pp(pickled)
+		pickled_b64 = pickled
+		# pickled_b64 = base64.b64encode(pickled)
 		# pp(pickled_b64)
-		pickled_b64	
+		# pp(type(pickled_b64))
+		# pickled_b64	
 
-		
+		# bytes(ints: Iterable[int])
 		response = requests.post(base, data =pickled_b64)
 		index = indexList.pop(0)
 		# sleep(x)
@@ -61,8 +63,9 @@ class postIt():
 
 from random import randint
 p = postIt()
-for i in range(10):
-	sec = randint(1, 10)
-	p.postDataNow(5+i)
-	sleep(sec)
+p.postDataNow(5)
+# for i in range(10):
+# 	sec = randint(1, 10)
+# 	p.postDataNow(5+i)
+# 	sleep(sec)
 
