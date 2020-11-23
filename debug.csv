@@ -1,0 +1,2 @@
+cmd,seqno,EUI,ts,fcnt,port,freq,toa,dr,ack,gws,sessionKeyId,bat,data
+gw,103915,FFFFFFFFFFFFFFFA,1606054046489,2,1,868500000,56,SF7 BW125 4/5,False,"{'rssi': -71, 'snr': 10, 'ts': 1606054046489, 'tmms': None, 'time': '2020-11-22T14:07:26.485739Z', 'gweui': '647FDAFFFF007AFB', 'ant': 0, 'lat': 47.40912537932723, 'lon': 8.549648523330688}",,255,01bbd70009d80010

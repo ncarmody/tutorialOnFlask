@@ -11,6 +11,41 @@ import copy
 
 
 
+#ifdef newman
+#type: begin ignore
+# print('ichwerdegeprinted')
+try:
+	from plotly.tools import mpl_to_plotly
+	# from plotly.tools import mpl_to_plotly
+
+	from plotly.matplotlylib import mplexporter, PlotlyRenderer
+	import plotly.graph_objs as go
+	from plotly.offline import plot
+	from plotly.subplots import make_subplots
+	def plotly_plot_data(fig):
+
+
+	    ax_list = fig.axes
+	    
+	    for ax in ax_list:
+	    	if ax.get_legend():
+	
+		        ax.get_legend().remove()
+
+	    plotly_fig = mpl_to_plotly(fig)
+	    
+	    legend = go.layout.Legend(
+	        x=0.05,
+	        y=0.95
+	    )
+	    plotly_fig.update_layout(showlegend=True, legend=legend)
+	    return plotly_fig
+	    # plotly.offline.plot(plotly_fig, filename="plotly_strain.html")
+	   	# print("plotly_conversion_function is available")
+except:
+		pass
+#type: end ignore
+
 def combine_interval(intervals, element_to_search_for):
 
 	return [1 for i, element in enumerate(intervals) if element_to_search_for in element]

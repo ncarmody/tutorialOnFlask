@@ -28,6 +28,7 @@ class postIt():
 		df = df.iloc[[index]]
 		self.dfPost = df.copy()
 		pp(self.dfPost)
+		# base = "http://51.103.158.10:5000/request"
 		base = "http://127.0.0.1:5000/request"
 		indexList = self.dfPost.index.to_list()
 
@@ -58,9 +59,10 @@ class postIt():
 				# raise Exception
 
 
-
+from random import randint
 p = postIt()
-for i in range(29):
+for i in range(10):
+	sec = randint(1, 10)
 	p.postDataNow(5+i)
-	sleep(10)
+	sleep(sec)
 

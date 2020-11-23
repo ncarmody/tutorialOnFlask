@@ -28,32 +28,42 @@ from dash.exceptions import PreventUpdate
 from plotly.tools import mpl_to_plotly
 from matplotlib import pyplot as plt
 import warnings
+import matplotlib as mpl
+from threading import Thread
+from time import sleep
 warnings.filterwarnings("ignore",category=plt.cbook.mplDeprecation)
+# mpl.
+# mpl.use
+mpl.use('Agg')
 
 pd.set_option('display.max_columns', 200)
 pd.set_option('display.max_rows', 30)
 pd.set_option('display.expand_frame_repr', True)
+dataDict_for_columns = {'distance':0.0, 'temperature': 0.0,'humidity': 0.0, 'time': "", 'year': None, 'month': None, 'day': None, 'date': None}
+# warnings.filterwarnings("ignore",category=plt.user)
 
 # sys.path.insert(0, os.getcwd())
 if os.name=='nt':
-	adress = os.getcwd()+"\\DataAfterEditing.csv"
+	adress = os.getcwd()+"\\file.csv"
 	pp(adress)
 elif os.name=='posix':
-	adress = os.getcwd()+"/DataAfterEditing.csv"
+	adress = os.getcwd()+"/file.csv"
 	pp(adress)
 # sys.path.insert(0, adress)
+try:
+	df = pd.read_csv(adress)
+	# raise Exception
+	# df.drop('Unnamed: 0', axis=1, inplace=True)
 
-df = pd.read_csv(adress)
+
+	# dici = df[df.columns.values].iloc[[0]].to_dict()
+	# df2 = pd.DataFrame(dici, index=[0])
+	# df = df.iloc[[0]]
+	# df = df.append(df2, ignore_index=True)
+except:
+	df = pd.DataFrame([], columns=list(dataDict_for_columns.keys()))
+
 # raise Exception
-df.drop('Unnamed: 0', axis=1, inplace=True)
-
-from threading import Thread
-from time import sleep
-
-dici = df[df.columns.values].iloc[[0]].to_dict()
-df2 = pd.DataFrame(dici, index=[0])
-df = df.iloc[[0]]
-df = df.append(df2, ignore_index=True)
 port_api = 5000
 
 app = Flask(__name__)
@@ -123,6 +133,8 @@ if __name__ == '__main__':
 	# tUpdate.start()
 
 	# tPost.start()
+
+	tApi.daemon = True
 	pp("starting api...")
 	tApi.start()
 	

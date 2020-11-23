@@ -1,0 +1,2 @@
+distance,temperature,humidity,time,year,month,day,date
+1136.23,25.2,40.96,2020-11-22 14:07:26.485739,2020,11,22,<built-in method date of Timestamp object at 0x000001AD062313C8>
