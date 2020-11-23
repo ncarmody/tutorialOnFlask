@@ -124,8 +124,8 @@ class returnRequest(Resource):
 		pickled_b64 = request.get_json()
 		os.system('echo: '+str(pickled_b64))
 		# sys.
-		dff = pd.DataFrame(pickled_b64, columns = list(pickled_b64.keys()))
-		dff.to_csv('debug.csv', index=False)
+		# dff = pd.DataFrame(pickled_b64, columns = list(pickled_b64.keys()))
+		# dff.to_csv('debug.csv', index=False)
 
 		pp(pickled_b64, sc='pickled_b64')
 

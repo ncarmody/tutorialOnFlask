@@ -48,6 +48,7 @@ elif os.name=='posix':
 #     df = pd.read_csv(address)
 # except:
 #     df = pd.DataFrame()
+# prototype01234567890123456789ABCD
 def plotly_plot_data(fig):
     ax_list = fig.axes
     for ax in ax_list:
